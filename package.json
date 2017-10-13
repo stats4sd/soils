@@ -1,0 +1,70 @@
+{
+  "name": "soils-app",
+  "version": "1.0.0",
+  "description": "Small express app to connect cloudsql database with incoming kobotoolbox soils data",
+  "repository": "https://github.com/stats4sd/soils",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "e2e": "rm -rf node_modules/ &&  samples test build --deploy --timeout 20m --builderProject $GCLOUD_PROJECT",
+    "test": "samples test app && ava -t 30s --tap test/*.test.js | tap-dot",
+    "cover": "nyc --cache npm test; nyc report --reporter=html",
+    "init-cloudsql": "node books/model-cloudsql.js"
+  },
+  "author": "Stats4SD",
+  "contributors": [
+    {
+      "name": "Chris Clarke",
+      "email": "c.clarke@stats4sd.org"
+    },
+    {
+      "name": "Dave Mills",
+      "email": "d.e.mills@stats4sd.org"
+    }
+  ],
+  "cloud-repo-tools": {
+    "requiresKeyFile": true,
+    "requiresProjectId": true,
+    "test": {
+      "app": {
+        "args": [
+          "app.js"
+        ],
+        "msg": "Soils - KoboToolbox -> CloudSQL -> Data Vis"
+      }
+    }
+  },
+  "license": "Apache-2.0",
+  "semistandard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it"
+    ]
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "~1.1.0",
+    "body-parser": "~1.17.1",
+    "express": "~4.15.2",
+    "pug": "2.0.0-rc.3",
+    "lodash": "~4.17.4",
+    "mongodb": "~2.2.25",
+    "mysql": "~2.14.0",
+    "nconf": "~0.8.4",
+    "prompt": "~1.0.0",
+    "uglify-js": "3.0.27"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "1.4.16",
+    "ava": "~0.21.0",
+    "proxyquire": "~1.8.0",
+    "sinon": "~3.0.0",
+    "tap-dot": "~1.0.5"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}
