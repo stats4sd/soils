@@ -2,7 +2,7 @@
 
 ## What is it?
 The stack links a number of bespoke odk forms hosted on kobo toolbox to a mysql custom-schema database and a visualisation platform. 
-This repository currently is currently purely for development purposes and not setup for general use (yet!)
+This repository currently is for development purposes and not designed for general use (yet!)
 
 
 
